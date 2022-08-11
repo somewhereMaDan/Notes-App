@@ -47,10 +47,9 @@ function showNotes(){
       </div>
     </div>`;
   });
-  // <h5 class="card-title"><Title>${index+1}</Title></h5>
 
   if(notesObj.length != 0){
-    document.getElementById('notes').innerHTML = html;
+    document.getElementById('notes').innerHTML = html; // this notes id the id of the div in the html file which we are using to show the notes below
   }else{
     document.getElementById('notes').innerHTML = `<div class="notecard my-2 mx-2 card" style="width: 20rem; margin-bottom: 17px;">
     <div class="card-body">
