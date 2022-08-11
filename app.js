@@ -67,11 +67,23 @@ function showNotes(){
 function deleteNode(index){
   console.log("this is: " ,index);
 
-  let notes = localStorage.getItem('notesID');
-
   notesObj.splice(index,1); // from the index, delete 1 element (like in first iteration index will be 0, so it will delete the first element)
   localStorage.setItem('notesID',JSON.stringify(notesObj));
   showNotes(); // to show the notes after deleting
 }
 
-// localStorage.clear(); // to clear the local storage
+
+let search = document.getElementById('searchTxt');
+search.addEventListener('input', ()=>{
+  let inputVal = search.value;
+  console.log(inputVal);
+  let notecards = document.getElementsByClassName('notecard');
+  Array.from(notecards).forEach((item)=>{ // going through all the cards and checking if the title of the card matches the input value
+    let cardTitle = item.getElementsByTagName('h5')[0].innerText; // grabbing the first h5 tag, by index 0 and then grabbing the innerText of it
+    if(cardTitle.includes(inputVal)){
+      item.style.display = 'block';
+    }else{
+      item.style.display = 'none';
+    }
+  });
+});
